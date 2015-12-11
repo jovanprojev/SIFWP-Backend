@@ -13,6 +13,8 @@ public class Notification extends BaseEntity {
 	private User user;
 	private Date date;
 	private String message;
+	private int likes;
+	private int dislikes;
 	@ManyToOne
 	private Relation relation;
 
@@ -48,4 +50,20 @@ public class Notification extends BaseEntity {
 		this.relation = relation;
 	}
 
+	public int getLikes() {
+		return likes;
+	}
+
+	public void setLikes(int likes) {
+		this.likes = likes;
+	}
+
+	public int getDislikes() {
+		return dislikes;
+	}
+
+	public void setDislikes(int dislikes) {
+		this.dislikes = dislikes;
+	}
+	
 }

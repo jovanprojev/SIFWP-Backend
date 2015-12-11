@@ -30,4 +30,14 @@ public class NotificationController extends CrudResource<Notification, Notificat
 		return notificationService.findNotificationService(relation.getStartDestination(), relation.getEndDestination());
 	}
 
+	@RequestMapping(value="/like", method = RequestMethod.POST, produces = "application/json")
+	public Notification likeNotification(@RequestBody Notification notification){
+		return notificationService.likeNotificationService(notification);
+	}
+	
+	@RequestMapping(value="/dislike", method = RequestMethod.POST, produces = "application/json")
+	public Notification dislikeNotification(@RequestBody Notification notification){
+		return notificationService.likeNotificationService(notification);
+	}
+
 }
