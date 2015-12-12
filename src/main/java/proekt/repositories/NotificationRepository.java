@@ -12,4 +12,6 @@ import proekt.models.Relation;
 public interface NotificationRepository extends JpaRepository<Notification, Long>{
 
 	public List<Notification> findByRelation(Relation relation);
+	
+	public Notification findById(Long id);
 }

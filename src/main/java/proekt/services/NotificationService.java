@@ -10,7 +10,7 @@ public interface NotificationService extends BaseEntityCrudService<Notification>
 
 	public List<Notification> findNotificationService(String start, String end);
 	
-	public Notification likeNotificationService(Notification notification);
+	public Notification likeNotificationService(Long id);
 	
-	public Notification dislikeNotificationService(Notification notification);
+	public Notification dislikeNotificationService(Long id);
 }

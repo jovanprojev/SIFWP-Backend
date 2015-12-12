@@ -35,15 +35,24 @@ public class NotificationServiceImpl extends BaseEntityCrudServiceImpl<Notificat
 	}
 
 	@Override
-	public Notification likeNotificationService(Notification notification) {
-		notification.setLikes(notification.getLikes()+1);
-		return repository.save(notification); 
+	public Notification likeNotificationService(Long id) {
+		Notification notification = repository.findById(id);
+		int likes = notification.getLikes();
+		notification.setLikes(likes+1);
+		repository.save(notification);
+		return notification;
 	}
 
 	@Override
-	public Notification dislikeNotificationService(Notification notification) {
-		notification.setDislikes(notification.getDislikes()+1);
-		return repository.save(notification);
+	public Notification dislikeNotificationService(Long id) {
+		Notification notification = repository.findById(id);
+		int dislikes = notification.getDislikes();
+		notification.setDislikes(dislikes + 1);
+		repository.save(notification);
+		return notification;
 	}
+
+	
+	
 
 }

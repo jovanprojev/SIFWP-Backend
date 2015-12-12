@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
 import proekt.models.Notification;
 import proekt.models.Relation;
 import proekt.services.NotificationService;
@@ -24,20 +23,21 @@ public class NotificationController extends CrudResource<Notification, Notificat
 	public NotificationService getService() {
 		return notificationService;
 	}
-	
-	@RequestMapping(value="/search", method = RequestMethod.POST, produces = "application/json")
-	public List <Notification> findNotification(@RequestBody Relation relation){
-		return notificationService.findNotificationService(relation.getStartDestination(), relation.getEndDestination());
+
+	@RequestMapping(value = "/search", method = RequestMethod.POST, produces = "application/json")
+	public List<Notification> findNotification(@RequestBody Relation relation) {
+		return notificationService.findNotificationService(relation.getStartDestination(),
+				relation.getEndDestination());
 	}
 
-	@RequestMapping(value="/like", method = RequestMethod.POST, produces = "application/json")
-	public Notification likeNotification(@RequestBody Notification notification){
-		return notificationService.likeNotificationService(notification);
+	@RequestMapping(value = "/like", method = RequestMethod.POST, produces = "application/json")
+	public Notification likeNotification(@RequestParam(value = "id") Long id) {
+		return notificationService.likeNotificationService(id);
 	}
-	
-	@RequestMapping(value="/dislike", method = RequestMethod.POST, produces = "application/json")
-	public Notification dislikeNotification(@RequestBody Notification notification){
-		return notificationService.likeNotificationService(notification);
+
+	@RequestMapping(value = "/dislike", method = RequestMethod.POST, produces = "application/json")
+	public Notification dislikeNotification(@RequestParam(value = "id") Long id) {
+		return notificationService.dislikeNotificationService(id);
 	}
 
 }
