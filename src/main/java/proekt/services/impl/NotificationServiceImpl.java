@@ -29,8 +29,8 @@ public class NotificationServiceImpl extends BaseEntityCrudServiceImpl<Notificat
 	public List<Notification> findNotificationService(String start, String end) {
 		Relation firstRelation = relationRepository.findBystartDestinationAndEndDestination(start, end);
 		Relation secoundRelation = relationRepository.findBystartDestinationAndEndDestination(end, start);
-		List<Notification> result = repository.findByRelation(firstRelation);
-		result.addAll(repository.findByRelation(secoundRelation));
+		List<Notification> result = repository.findByRelationOrderByDateDesc(firstRelation);
+		result.addAll(repository.findByRelationOrderByDateDesc(secoundRelation));
 		return result;
 	}
 

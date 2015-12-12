@@ -11,7 +11,7 @@ import proekt.models.Relation;
 @Repository
 public interface NotificationRepository extends JpaRepository<Notification, Long>{
 
-	public List<Notification> findByRelation(Relation relation);
+	public List<Notification> findByRelationOrderByDateDesc(Relation relation);
 	
 	public Notification findById(Long id);
 }
