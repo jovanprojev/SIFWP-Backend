@@ -28,4 +28,5 @@ public class RelationController extends CrudResource<Relation, RelationService> 
 	public Relation create(@RequestBody Relation entity, HttpServletRequest request, HttpServletResponse response) {
 		return relationService.saveEntity(entity);
 	}
+	
 }
