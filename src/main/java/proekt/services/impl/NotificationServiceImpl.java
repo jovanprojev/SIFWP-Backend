@@ -52,7 +52,4 @@ public class NotificationServiceImpl extends BaseEntityCrudServiceImpl<Notificat
 		return notification;
 	}
 
-	
-	
-
 }
