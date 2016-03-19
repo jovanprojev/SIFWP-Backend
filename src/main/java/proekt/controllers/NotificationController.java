@@ -2,6 +2,9 @@ package proekt.controllers;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,7 +26,7 @@ public class NotificationController extends CrudResource<Notification, Notificat
 	public NotificationService getService() {
 		return notificationService;
 	}
-
+	
 	@RequestMapping(value = "/search", method = RequestMethod.POST, produces = "application/json")
 	public List<Notification> findNotification(@RequestBody Relation relation) {
 		return notificationService.findNotificationService(relation.getStartDestination(),

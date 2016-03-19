@@ -1,8 +1,12 @@
 package proekt.models;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
@@ -17,6 +21,24 @@ public class Notification extends BaseEntity {
 	private int dislikes;
 	@ManyToOne
 	private Relation relation;
+	@ManyToMany(fetch = FetchType.EAGER)
+	private List<Pin> pins;
+
+	public Notification() {
+		pins = new ArrayList<Pin>();
+	}
+
+	public void addPin(Pin pin) {
+		pins.add(pin);
+	}
+
+	public List<Pin> getPins() {
+		return pins;
+	}
+
+	public void setPins(List<Pin> pins) {
+		this.pins = pins;
+	}
 
 	public User getUser() {
 		return user;
@@ -65,5 +87,5 @@ public class Notification extends BaseEntity {
 	public void setDislikes(int dislikes) {
 		this.dislikes = dislikes;
 	}
-	
+
 }
