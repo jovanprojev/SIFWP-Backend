@@ -37,5 +37,4 @@ public class Pin extends BaseEntity {
 		this.longitude = longitude;
 	}
 
-	
 }
