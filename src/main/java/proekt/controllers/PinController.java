@@ -28,5 +28,9 @@ public class PinController extends CrudResource<Pin, PinService> {
 	public boolean addPins(@RequestParam("notificationId") Long notificationId, @RequestBody List<Pin> pins) {
 		return pinService.create(notificationId, pins);
 	}
-
+	
+	@RequestMapping(value = "/getPins", method = RequestMethod.GET, produces = "application/json")
+	public List<Pin> getPins(@RequestParam("time")Integer minutes) {
+		return pinService.findPinsByTime(minutes);
+	}
 }

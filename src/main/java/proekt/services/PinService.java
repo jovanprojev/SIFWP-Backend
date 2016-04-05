@@ -8,4 +8,5 @@ public interface PinService extends BaseEntityCrudService<Pin> {
 
 	boolean create(Long notificationId, List<Pin> pins);
 
+	List<Pin> findPinsByTime (Integer time);
 }

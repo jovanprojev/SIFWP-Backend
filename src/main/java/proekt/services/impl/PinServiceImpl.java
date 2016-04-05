@@ -1,5 +1,7 @@
 package proekt.services.impl;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +40,21 @@ public class PinServiceImpl extends BaseEntityCrudServiceImpl<Pin, PinRepository
 			return false;
 		}
 		return true;
+	}
+
+	@Override
+	public List<Pin> findPinsByTime(Integer time) {
+		Date now = new Date();
+		long miliseconds = time*60*1000;
+		long require = now.getTime()-miliseconds;
+		Date nov = new Date(require);
+		System.out.println(nov);
+		List<Notification> site = notificationRepository.findByDateGreaterThan(nov);
+		List<Pin> result = new ArrayList<Pin>();
+		for (Notification notification : site) {
+			result.addAll(notification.getPins());
+		}
+		return result;
 	}
 
 }
