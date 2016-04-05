@@ -29,6 +29,7 @@ public class PinController extends CrudResource<Pin, PinService> {
 		return pinService.create(notificationId, pins);
 	}
 	
+	
 	@RequestMapping(value = "/getPins", method = RequestMethod.GET, produces = "application/json")
 	public List<Pin> getPins(@RequestParam("time")Integer minutes) {
 		return pinService.findPinsByTime(minutes);
